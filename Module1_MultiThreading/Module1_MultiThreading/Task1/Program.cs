@@ -12,14 +12,13 @@ namespace Task1
             for (int i = 0; i < 100; i++) {
                 tasks[i] = new Task((object param) => {
                     var taskNumber = (int)param;
-                    for(var j = 0; j < 1000; j++)
-                    {
+                    for (var j = 1; j <= 10; j++) {
                         Console.WriteLine($"Task #{taskNumber} - {j}");
-                    }                    
+                    }
                 }, i);
             }
 
-            Parallel.ForEach<Task>(tasks, (t) => { t.Start(); });
+            Parallel.ForEach(tasks, (t) => { t.Start(); });
             Task.WaitAll(tasks);
 
             Console.ReadKey();
