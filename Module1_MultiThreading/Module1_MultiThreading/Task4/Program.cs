@@ -7,7 +7,7 @@ namespace Task4
         static void Main(string[] args)
         {
             var state = new ThreadState();
-            var thread = new Thread(state.CreateThread);
+            var thread = new Thread(() => state.CreateThread(state));
             thread.Start();
             thread.Join();
         }
