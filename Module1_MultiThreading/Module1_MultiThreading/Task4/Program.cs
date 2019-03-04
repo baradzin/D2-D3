@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading;
 
 namespace Task4
 {
@@ -10,6 +6,10 @@ namespace Task4
     {
         static void Main(string[] args)
         {
+            var state = new ThreadState();
+            var thread = new Thread(state.CreateThread);
+            thread.Start();
+            thread.Join();
         }
     }
 }
