@@ -16,7 +16,7 @@ namespace Task4
 
         public void CreateThread(object threadState)
         {
-            Console.WriteLine("Taking Task2....");
+            Console.WriteLine($"ThreadId: {Thread.CurrentThread.ManagedThreadId} Taking resource...");
             Program.semaphore.WaitOne();
             var state = (ThreadState)threadState;
             if (state._depth > 0) {
@@ -24,10 +24,11 @@ namespace Task4
                 state._depth--;
                 Console.WriteLine($"ThreadId: {Thread.CurrentThread.ManagedThreadId} value: {state._value}");
                 ThreadPool.QueueUserWorkItem(state.CreateThread, state);
-              //  Thread.Sleep(1000);
                 Console.WriteLine($"ThreadId: {Thread.CurrentThread.ManagedThreadId} value: {state._value} finished");
+            } else {
+                Console.WriteLine($"ThreadId: {Thread.CurrentThread.ManagedThreadId} Unable to create new thread");
             }
-            Console.WriteLine("Releasing Task2....");
+            Console.WriteLine($"ThreadId: {Thread.CurrentThread.ManagedThreadId} Releasing resource...");
             Program.semaphore.Release();
         }
     }
