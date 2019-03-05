@@ -13,17 +13,15 @@ namespace Task6
         Random rand = new Random();
         int maxValue;
         int minValue;
-        int numberElements;
         public List<int> List { get; set; }
 
         public ThreadSafeCollection(int minValue = 0, int maxValue = 20, int numberElements = 10)
         {
             this.minValue = minValue;
             this.maxValue = maxValue;
-            this.numberElements = numberElements;
-            List = CreateSharedCollection();
+            List = CreateSharedCollection(numberElements);
         }
-        public List<int> CreateSharedCollection()
+        public List<int> CreateSharedCollection(int numberElements)
         {
             var list = new List<int>();
             for (int i = 0; i < numberElements; i++) {

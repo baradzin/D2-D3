@@ -54,10 +54,10 @@ namespace Task6
             }
 
             watch.Start();
-            //Parallel.ForEach(tasksList, (t) => { t.Start(); });
-            foreach (var task in tasksList) {
-                task.Start();
-            }
+            Parallel.ForEach(tasksList, (t) => { t.Start(); });
+            //foreach (var task in tasksList) {
+            //    task.Start();
+            //}
             Task.WaitAll(tasksList);
             watch.Stop();
 
