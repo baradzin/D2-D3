@@ -75,6 +75,7 @@ namespace Task7.Tests
             task.Wait();
         }
         //But it's not 100% result, there is very low possibility to execute second task in another thread
+        //https://devblogs.microsoft.com/pfxteam/when-executesynchronously-doesnt-execute-synchronously/
         //ExecutionResults:
         //ThreadId: 8 this task will throw exception
         //ThreadId: 8 throwing exception...
