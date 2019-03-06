@@ -13,8 +13,7 @@ namespace Task7
         {
             Console.WriteLine($"ThreadId: {Thread.CurrentThread.ManagedThreadId} this task will throw exception");
             Console.WriteLine($"ThreadId: {Thread.CurrentThread.ManagedThreadId} throwing exception...");
-            Thread.Sleep(1000);
-            //throw new Exception();
+            throw new Exception();
         }
 
         public void RunTaskWithoutException()
