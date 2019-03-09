@@ -1,31 +1,57 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Task1
 {
     class Program
     {
+        static int depth = 10;
+        
         static void Main(string[] args)
         {
-            CalculateNumber(10).Wait();
+            Run();
         }
 
-        public static async Task CalculateNumber(int N)
+        public static void Run()
         {
-            double result = await Task.Run<double>(() => GetSum(N));
-            Console.WriteLine("Sum Result :: " + result);
+            CancellationTokenSource cancelTokenSource = new CancellationTokenSource();
+            Console.WriteLine("If you want to stop application, type q");
+            ConsoleReadLine(cancelTokenSource).Wait();
         }
 
-        public static double GetSum(int N)
+        public static Task CalculateNumber(int N, CancellationToken token)
         {
-            double res = 0;
-            for(int i = 1; i < N; i++) {
-                res += i;
+            return Task.Run(() => {
+                double res = 0;
+                for (int i = 1; i < N; i++) {
+                    if (token.IsCancellationRequested) { return; }
+                    Thread.Sleep(500);
+                    res += i;
+                }
+                Console.WriteLine($"ThreadId: {Thread.CurrentThread.ManagedThreadId} SUM: {res}");
+            });
+        }
+
+        public static async Task ConsoleReadLine(CancellationTokenSource cancelTokenSource, Task calculatingTask = null)
+        {
+            Console.WriteLine($"ThreadId: {Thread.CurrentThread.ManagedThreadId} : Enter Number or q");
+            string number = Console.ReadLine();
+            if (number.Equals("q")) {
+                if(calculatingTask != null) {
+                    calculatingTask.Wait();
+                }
+                return;
             }
-            return res;
+
+            cancelTokenSource.Cancel();
+            CancellationTokenSource  newCancellationSource = new CancellationTokenSource();
+            int n = int.Parse(number);
+            var task = CalculateNumber(n, newCancellationSource.Token);
+            if(depth > 0) {
+                depth--;
+                await ConsoleReadLine(newCancellationSource, task);
+            }            
         }
     }
 }
