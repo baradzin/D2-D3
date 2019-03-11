@@ -12,13 +12,13 @@
   <xs:element name="DataBase" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataBase" msprop:Generator_UserDSName="DataBase">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Sites" msprop:Generator_TableClassName="SitesDataTable" msprop:Generator_TableVarName="tableSites" msprop:Generator_RowChangedName="SitesRowChanged" msprop:Generator_TablePropName="Sites" msprop:Generator_RowDeletingName="SitesRowDeleting" msprop:Generator_RowChangingName="SitesRowChanging" msprop:Generator_RowEvHandlerName="SitesRowChangeEventHandler" msprop:Generator_RowDeletedName="SitesRowDeleted" msprop:Generator_RowClassName="SitesRow" msprop:Generator_UserTableName="Sites" msprop:Generator_RowEvArgName="SitesRowChangeEvent">
+        <xs:element name="Sites" msprop:Generator_TableClassName="SitesDataTable" msprop:Generator_TableVarName="tableSites" msprop:Generator_TablePropName="Sites" msprop:Generator_RowDeletingName="SitesRowDeleting" msprop:Generator_RowChangingName="SitesRowChanging" msprop:Generator_RowEvHandlerName="SitesRowChangeEventHandler" msprop:Generator_RowDeletedName="SitesRowDeleted" msprop:Generator_UserTableName="Sites" msprop:Generator_RowChangedName="SitesRowChanged" msprop:Generator_RowEvArgName="SitesRowChangeEvent" msprop:Generator_RowClassName="SitesRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
               <xs:element name="Url" msprop:Generator_ColumnVarNameInTable="columnUrl" msprop:Generator_ColumnPropNameInRow="Url" msprop:Generator_ColumnPropNameInTable="UrlColumn" msprop:Generator_UserColumnName="Url" type="xs:string" minOccurs="0" />
-              <xs:element name="Document" msprop:Generator_ColumnVarNameInTable="columnDocument" msprop:Generator_ColumnPropNameInRow="Document" msprop:Generator_ColumnPropNameInTable="DocumentColumn" msprop:Generator_UserColumnName="Document" type="xs:string" minOccurs="0" />
-              <xs:element name="DocumentSize" msprop:Generator_ColumnVarNameInTable="columnDocumentSize" msprop:Generator_ColumnPropNameInRow="DocumentSize" msprop:Generator_ColumnPropNameInTable="DocumentSizeColumn" msprop:Generator_UserColumnName="DocumentSize" type="xs:double" minOccurs="0" />
+              <xs:element name="Path" msprop:Generator_ColumnVarNameInTable="columnPath" msprop:Generator_ColumnPropNameInRow="Path" msprop:Generator_ColumnPropNameInTable="PathColumn" msprop:Generator_UserColumnName="Path" type="xs:string" minOccurs="0" />
+              <xs:element name="FileSize" msprop:Generator_ColumnVarNameInTable="columnFileSize" msprop:Generator_ColumnPropNameInRow="FileSize" msprop:Generator_ColumnPropNameInTable="FileSizeColumn" msprop:Generator_UserColumnName="FileSize" type="xs:double" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

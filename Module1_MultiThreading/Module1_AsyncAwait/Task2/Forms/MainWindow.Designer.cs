@@ -35,6 +35,7 @@
             this.listView = new System.Windows.Forms.ListView();
             this.Id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Url = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Path = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Size = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -42,6 +43,7 @@
             // toolStrip1
             // 
             this.toolStrip1.AutoSize = false;
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsAddUrl,
             this.toolStripSeparator2,
@@ -49,10 +51,9 @@
             this.toolStripSeparator3});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(800, 80);
+            this.toolStrip1.Size = new System.Drawing.Size(1000, 78);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
-            this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
             // 
             // tsAddUrl
             // 
@@ -69,7 +70,7 @@
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 80);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 78);
             // 
             // tsRemove
             // 
@@ -79,25 +80,27 @@
             this.tsRemove.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsRemove.Name = "tsRemove";
             this.tsRemove.Size = new System.Drawing.Size(70, 70);
-            this.tsRemove.Text = "Remove";
+            this.tsRemove.Text = "Remove All";
             this.tsRemove.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsRemove.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 80);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 78);
             // 
             // listView
             // 
             this.listView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Id,
             this.Url,
+            this.Path,
             this.Size});
             this.listView.GridLines = true;
-            this.listView.Location = new System.Drawing.Point(12, 83);
+            this.listView.Location = new System.Drawing.Point(13, 82);
+            this.listView.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.listView.Name = "listView";
-            this.listView.Size = new System.Drawing.Size(732, 346);
+            this.listView.Size = new System.Drawing.Size(925, 341);
             this.listView.TabIndex = 1;
             this.listView.UseCompatibleStateImageBehavior = false;
             this.listView.View = System.Windows.Forms.View.Details;
@@ -110,7 +113,12 @@
             // Url
             // 
             this.Url.Text = "Url";
-            this.Url.Width = 625;
+            this.Url.Width = 300;
+            // 
+            // Path
+            // 
+            this.Path.Text = "Path";
+            this.Path.Width = 300;
             // 
             // Size
             // 
@@ -119,11 +127,12 @@
             // 
             // MainWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1000, 443);
             this.Controls.Add(this.listView);
             this.Controls.Add(this.toolStrip1);
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "MainWindow";
             this.Text = "DownloadManager";
             this.Load += new System.EventHandler(this.MainWindow_Load);
@@ -143,7 +152,8 @@
         protected internal System.Windows.Forms.ListView listView;
         private System.Windows.Forms.ColumnHeader Id;
         private System.Windows.Forms.ColumnHeader Url;
-        private System.Windows.Forms.ColumnHeader Size;
+        private new System.Windows.Forms.ColumnHeader Size;
+        private System.Windows.Forms.ColumnHeader Path;
     }
 }
 

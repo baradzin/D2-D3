@@ -283,9 +283,9 @@ namespace Task2.Database {
             
             private global::System.Data.DataColumn columnUrl;
             
-            private global::System.Data.DataColumn columnDocument;
+            private global::System.Data.DataColumn columnPath;
             
-            private global::System.Data.DataColumn columnDocumentSize;
+            private global::System.Data.DataColumn columnFileSize;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
@@ -338,17 +338,17 @@ namespace Task2.Database {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn DocumentColumn {
+            public global::System.Data.DataColumn PathColumn {
                 get {
-                    return this.columnDocument;
+                    return this.columnPath;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn DocumentSizeColumn {
+            public global::System.Data.DataColumn FileSizeColumn {
                 get {
-                    return this.columnDocumentSize;
+                    return this.columnFileSize;
                 }
             }
             
@@ -389,13 +389,13 @@ namespace Task2.Database {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public SitesRow AddSitesRow(string Url, string Document, double DocumentSize) {
+            public SitesRow AddSitesRow(string Url, string Path, double FileSize) {
                 SitesRow rowSitesRow = ((SitesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         Url,
-                        Document,
-                        DocumentSize};
+                        Path,
+                        FileSize};
                 rowSitesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowSitesRow);
                 return rowSitesRow;
@@ -427,8 +427,8 @@ namespace Task2.Database {
             internal void InitVars() {
                 this.columnId = base.Columns["Id"];
                 this.columnUrl = base.Columns["Url"];
-                this.columnDocument = base.Columns["Document"];
-                this.columnDocumentSize = base.Columns["DocumentSize"];
+                this.columnPath = base.Columns["Path"];
+                this.columnFileSize = base.Columns["FileSize"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -438,10 +438,10 @@ namespace Task2.Database {
                 base.Columns.Add(this.columnId);
                 this.columnUrl = new global::System.Data.DataColumn("Url", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnUrl);
-                this.columnDocument = new global::System.Data.DataColumn("Document", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDocument);
-                this.columnDocumentSize = new global::System.Data.DataColumn("DocumentSize", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDocumentSize);
+                this.columnPath = new global::System.Data.DataColumn("Path", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPath);
+                this.columnFileSize = new global::System.Data.DataColumn("FileSize", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFileSize);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("SitesKey", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AutoIncrement = true;
@@ -617,33 +617,33 @@ namespace Task2.Database {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string Document {
+            public string Path {
                 get {
                     try {
-                        return ((string)(this[this.tableSites.DocumentColumn]));
+                        return ((string)(this[this.tableSites.PathColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Document\' in table \'Sites\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Path\' in table \'Sites\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableSites.DocumentColumn] = value;
+                    this[this.tableSites.PathColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public double DocumentSize {
+            public double FileSize {
                 get {
                     try {
-                        return ((double)(this[this.tableSites.DocumentSizeColumn]));
+                        return ((double)(this[this.tableSites.FileSizeColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'DocumentSize\' in table \'Sites\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'FileSize\' in table \'Sites\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableSites.DocumentSizeColumn] = value;
+                    this[this.tableSites.FileSizeColumn] = value;
                 }
             }
             
@@ -661,26 +661,26 @@ namespace Task2.Database {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsDocumentNull() {
-                return this.IsNull(this.tableSites.DocumentColumn);
+            public bool IsPathNull() {
+                return this.IsNull(this.tableSites.PathColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetDocumentNull() {
-                this[this.tableSites.DocumentColumn] = global::System.Convert.DBNull;
+            public void SetPathNull() {
+                this[this.tableSites.PathColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsDocumentSizeNull() {
-                return this.IsNull(this.tableSites.DocumentSizeColumn);
+            public bool IsFileSizeNull() {
+                return this.IsNull(this.tableSites.FileSizeColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetDocumentSizeNull() {
-                this[this.tableSites.DocumentSizeColumn] = global::System.Convert.DBNull;
+            public void SetFileSizeNull() {
+                this[this.tableSites.FileSizeColumn] = global::System.Convert.DBNull;
             }
         }
         

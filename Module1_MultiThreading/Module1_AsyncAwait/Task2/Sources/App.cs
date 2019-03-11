@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Net.Http;
 using Task2.Database;
 
 namespace Task2
@@ -10,6 +6,7 @@ namespace Task2
     static class App
     {
         static DataBase _db;
+        static HttpClient _client;
         
         public static DataBase DB
         {
@@ -18,6 +15,16 @@ namespace Task2
                     _db = new DataBase();
                 }
                 return _db;
+            }
+        }
+
+        public static HttpClient Client
+        {
+            get {
+                if(_client == null) {
+                    _client = new HttpClient();
+                }
+                return _client;
             }
         }
     }

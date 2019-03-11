@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Task2
@@ -16,11 +9,6 @@ namespace Task2
         public MainWindow()
         {
             InitializeComponent();
-        }
-
-        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
@@ -36,12 +24,14 @@ namespace Task2
 
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
-            if(MessageBox.Show("Are you sure want to delete this record?", "Message", 
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.OK) {
-                for(int i = listView.SelectedItems.Count; i > 0; i--) {
-                    ListViewItem item = listView.SelectedItems[i - 1];
-                    App.DB.Sites.Rows[item.Index].Delete();
-                    listView.Items[item.Index].Remove();
+            if(MessageBox.Show("Are you sure want to delete these records?", "Message", 
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
+                for(int i = listView.Items.Count; i > 0; i--) {
+                    ListViewItem item = listView.Items[i - 1];
+                    var row = App.DB.Sites.Rows[item.Index];
+                    File.Delete(row["Path"].ToString());
+                    row.Delete();
+                    listView.Items[item.Index].Remove();                   
                 }
                 App.DB.AcceptChanges();
                 App.DB.WriteXml($"{Application.StartupPath}/data.dat");
@@ -56,7 +46,8 @@ namespace Task2
                 foreach(var row in App.DB.Sites) {
                     ListViewItem item = new ListViewItem(row.Id.ToString());
                     item.SubItems.Add(row.Url);
-                    item.SubItems.Add(row.DocumentSize.ToString());
+                    item.SubItems.Add(row.Path);
+                    item.SubItems.Add(row.FileSize.ToString());
                     listView.Items.Add(item);
                 }
             }
