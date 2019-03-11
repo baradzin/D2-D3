@@ -27,7 +27,7 @@ namespace Task2
         {
             Uri uri = new Uri(this.Url);
             _cancellationTokenSource = new CancellationTokenSource();
-            Path = FileNameHelper.GetFileName(uri, Application.StartupPath);
+            Path = FileNameHelper.GetFileNameAndCreate(uri, Application.StartupPath);
             var client = new HttpClientDownloadWithProgress(App.Client, Url, Path, _cancellationTokenSource.Token);
             client.ProgressChanged += Client_DownloadProgressChanged;
             client.DownloadFileCompleted += Client_DownloadFileCompleted;

@@ -15,8 +15,10 @@ namespace Task2
         {
             using(var dialog = new frmAddUrl()) {
                 if (dialog.ShowDialog() == DialogResult.OK) {
-                    frmDownload frmDownload = new frmDownload(this);
-                    frmDownload.Url = dialog.Url;
+                    frmDownload frmDownload = new frmDownload(this)
+                    {
+                        Url = dialog.Url
+                    };
                     frmDownload.Show();
                 }
             }

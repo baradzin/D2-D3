@@ -51,7 +51,7 @@ namespace Task2
             var buffer = new byte[8192];
             var isMoreToRead = true;
 
-            using (var fileStream = new FileStream(_destinationFilePath, FileMode.Create, FileAccess.Write, FileShare.None, 8192, true)) {
+            using (var fileStream = new FileStream(_destinationFilePath, FileMode.Open, FileAccess.Write, FileShare.None, 8192, true)) {
                 do {
                     int bytesRead;
                     if (_cancellationToken.HasValue) {

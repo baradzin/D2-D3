@@ -5,18 +5,27 @@ namespace Task2
 {
     static class FileNameHelper
     {
-        public static string GetFileName(Uri uri, string path)
+        readonly static object lockObj = new object();
+        public static string GetFileNameAndCreate(Uri uri, string path)
         {
-            string filename = Path.GetFileName(uri.LocalPath);
-            if (File.Exists(filename)) {
-                for(int i = 0; i < int.MaxValue; i++) {
-                    string tempFileName = $"({i}){filename}";
-                    if (!File.Exists(tempFileName)) {
-                        return Path.Combine(path, tempFileName);
+            lock (lockObj) {
+                string filename = Path.GetFileName(uri.LocalPath);
+                string result = "";
+                if (File.Exists(filename)) {
+                    for (int i = 0; i < int.MaxValue; i++) {
+                        string tempFileName = $"({i}){filename}";
+                        if (!File.Exists(tempFileName)) {
+                            result = Path.Combine(path, tempFileName);
+                            break;
+                        }
                     }
+                } else {
+                    result = Path.Combine(path, filename);
                 }
+
+                File.Create(result).Close();
+                return result;
             }
-            return Path.Combine(path, filename);
         }
     }
 }
