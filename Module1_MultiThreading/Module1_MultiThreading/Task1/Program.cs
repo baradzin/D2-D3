@@ -10,9 +10,9 @@ namespace Task1
             var tasks = new Task[100];
             for (int i = 0; i < 100; i++) {
                 tasks[i] = new Task((object param) => {
-                    var taskNumber = (int)param;
+                    var taskNumber = param;
                     for (var j = 1; j <= 10; j++) {
-                        Console.WriteLine($"Task #{taskNumber} - {j}");
+                        Console.WriteLine($"Task #{param} - {j}");
                     }
                 }, i);
             }
